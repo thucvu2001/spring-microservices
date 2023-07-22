@@ -2,12 +2,13 @@ package com.thucvu.inventoryservice.repository;
 
 import com.thucvu.inventoryservice.model.Inventory;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 
-    Optional<Inventory> findBySkuCode(String skuCode);
+    List<Inventory> findBySkuCodeIn(List<String> skuCode); // nếu 1 thành phần trong list không có trong db thì sẽ trả về list rỗng
 }
