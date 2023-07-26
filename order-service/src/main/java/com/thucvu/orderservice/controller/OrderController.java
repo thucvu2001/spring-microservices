@@ -25,7 +25,7 @@ public class OrderController {
     @CircuitBreaker(name = "inventory", fallbackMethod = "fallBackMethod") // khi bi ngat se goi fallbackMethod
     @TimeLimiter(name = "inventory")
     @Retry(name = "inventory")
-    public CompletableFuture<String> placeOrder (@RequestBody OrderRequest orderRequest) {
+    public CompletableFuture<String> placeOrder(@RequestBody OrderRequest orderRequest) {
         return CompletableFuture.supplyAsync(() -> orderService.placeOrder(orderRequest));
     }
 
